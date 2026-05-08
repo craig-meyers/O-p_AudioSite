@@ -1,0 +1,267 @@
+/* O-p Music Player Styles */
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Hero Section Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes drift {
+    0%, 100% { transform: scale(1.1) translateX(0) translateY(0); }
+    33% { transform: scale(1.1) translateX(-20px) translateY(-10px); }
+    66% { transform: scale(1.1) translateX(20px) translateY(10px); }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.1; }
+}
+
+@keyframes zoom {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.animate-drift {
+    animation: drift 20s ease-in-out infinite;
+}
+
+.animate-fade-in {
+    animation: fadeIn 1.5s ease-out;
+}
+
+.animate-flicker {
+    animation: flicker 0.3s ease-in-out;
+}
+
+.animate-zoom {
+    animation: zoom 8s ease-in-out infinite;
+}
+
+/* Hero Background Fix */
+#hero .bg-\[url\(\'img\/outofplace\.png\'\)\] {
+    background-image: url('../img/outofplace.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+}
+
+/* Play Button Styling */
+#play-btn {
+    transition: all 0.3s ease;
+}
+
+#play-btn i {
+    transition: color 0.3s ease;
+}
+
+#play-btn:hover {
+    background-color: #10b981;
+}
+
+#play-btn:hover i {
+    color: black !important;
+}
+
+/* Track Items */
+.track-item {
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.track-item:hover {
+    text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+.track-item.text-\[10b981\] {
+    color: #10b981 !important;
+    text-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+}
+
+/* Progress Bar */
+#progress-bar {
+    transition: width 0.3s ease;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.5);
+}
+
+/* Album Cover */
+.album-cover {
+    position: relative;
+    overflow: hidden;
+}
+
+.album-cover img {
+    transition: transform 8s ease-in-out;
+}
+
+.album-cover:hover img {
+    transform: scale(1.1);
+}
+
+/* Merch Items */
+.merch-item {
+    transition: all 0.5s ease;
+}
+
+.merch-item:hover {
+    transform: translateY(-5px);
+}
+
+.merch-item:hover img {
+    filter: brightness(0.9);
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+}
+
+.merch-item img {
+    transition: all 0.7s ease;
+}
+
+/* Custom Cursor */
+#cursor {
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease, background-color 0.2s ease;
+}
+
+/* Email Form */
+#email-form input:focus {
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+
+#email-confirm {
+    transition: opacity 0.3s ease;
+}
+
+/* Hero Button */
+#hero-play {
+    transition: all 0.3s ease;
+}
+
+#hero-play:hover {
+    transform: scale(1.03);
+}
+
+/* Outline Button */
+.outline-button {
+    transition: all 0.3s ease;
+}
+
+.outline-button:hover {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+/* Sound Awareness */
+body {
+    transition: filter 0.3s ease;
+}
+
+/* RGB Split Glitch Effect */
+@keyframes rgbSplit {
+    0% { filter: none; }
+    25% { filter: url(#rgb-split); }
+    50% { filter: none; }
+    75% { filter: url(#rgb-split); }
+    100% { filter: none; }
+}
+
+.rgb-glitch {
+    animation: rgbSplit 0.2s ease-in-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .animate-drift {
+        animation: none;
+    }
+    
+    #hero h1 {
+        font-size: 3rem !important;
+    }
+    
+    .flex.items-center.space-x-2 {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .w-10.h-10 {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+    
+    .w-12.h-12 {
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+    }
+}
+
+/* Focus States */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Notification Styles */
+.notification {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Grain Overlay */
+.grain-overlay {
+    position: absolute;
+    inset: 0;
+    opacity: 0.1;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+}
+
+/* Ambient Light Effects */
+.ambient-light {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+    animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(50px, -30px) scale(1.1); }
+}

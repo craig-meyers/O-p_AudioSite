@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O-p</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-black text-white font-['Inter'] overflow-x-hidden">
+    
+    <!-- Custom Cursor -->
+    <div id="cursor" class="fixed w-4 h-4 bg-white rounded-full pointer-events-none z-50 mix-blend-difference transition-all duration-100"></div>
+    
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative h-screen flex items-center justify-start overflow-hidden">
+        <!-- Background with ambient motion -->
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80 z-10"></div>
+        <div class="absolute inset-0" style="background-image: url('img/outofplace.png'); background-size: cover; background-position: center; background-repeat: no-repeat; transform: scale(1.1);" class="animate-drift"></div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-20 max-w-7xl mx-auto px-12">
+            <div class="max-w-2xl">
+                <h1 class="text-6xl md:text-7xl lg:text-8xl font-light tracking-wider text-[#F5F5F3] mb-8 animate-fade-in">
+                    OUT OF PLACE
+                </h1>
+                <button id="hero-play" class="group bg-white text-black px-8 py-4 rounded-full font-medium hover:scale-105 transition-all duration-300 hover:shadow-[0_0_30px_rgba(134,239,172,0.3)]">
+                    <span class="flex items-center space-x-3">
+                        <i class="fas fa-play text-sm"></i>
+                        <span>PLAY</span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Light flicker effect -->
+        <div class="absolute inset-0 opacity-0 animate-flicker pointer-events-none"></div>
+    </section>
+
+    <!-- FEATURED MUSIC SECTION -->
+    <section id="featured-music" class="min-h-screen py-20 px-12 flex items-center justify-center">
+        <div class="max-w-4xl w-full">
+            <!-- Now Playing -->
+            <div class="mb-16">
+                <h2 class="text-2xl font-light mb-8 text-center">Now Playing</h2>
+                
+                <!-- Minimal Player UI -->
+                <div class="flex items-center space-x-4 mb-8">
+                    <div class="flex items-center space-x-2">
+                        <button id="prev-btn" class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:border-[#10b981] transition-colors">
+                            <i class="fas fa-backward text-gray-400 hover:text-[#10b981] text-xs"></i>
+                        </button>
+                        <button id="play-btn" class="w-12 h-12 rounded-full border border-[#10b981] flex items-center justify-center hover:bg-[#10b981] transition-colors">
+                            <i class="fas fa-play text-[#10b981] hover:text-black text-sm ml-1"></i>
+                        </button>
+                        <button id="next-btn" class="w-10 h-10 rounded-full border border-gray-600 flex items-center justify-center hover:border-[#10b981] transition-colors">
+                            <i class="fas fa-forward text-gray-400 hover:text-[#10b981] text-xs"></i>
+                        </button>
+                    </div>
+                    <div class="flex-1">
+                        <div class="text-sm mb-2" id="now-playing">Keep Up — O-p</div>
+                        <div class="relative h-0.5 bg-gray-800">
+                            <div id="progress-bar" class="absolute left-0 top-0 h-full w-0 bg-[#10b981] transition-all duration-300"></div>
+                            <div id="progress-hover" class="absolute top-0 h-0.5 bg-[#10b981] opacity-0 hover:opacity-100 transition-opacity"></div>
+                            <div id="time-tooltip" class="absolute -top-8 text-xs text-[#10b981] opacity-0 transition-opacity"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Track List -->
+            <div class="space-y-4">
+                <div class="track-item flex items-center space-x-6 py-3 cursor-pointer group" data-src="audio/Keep Up.mp3" data-title="Keep Up">
+                    <span class="text-gray-500 text-sm w-8">01</span>
+                    <span class="flex-1 group-hover:text-[#10b981] transition-colors">Keep Up</span>
+                    <span class="text-gray-600 text-sm">3:45</span>
+                </div>
+                <div class="track-item flex items-center space-x-6 py-3 cursor-pointer group" data-src="audio/The Breaks.mp3" data-title="The Breaks">
+                    <span class="text-gray-500 text-sm w-8">02</span>
+                    <span class="flex-1 group-hover:text-[#10b981] transition-colors">The Breaks</span>
+                    <span class="text-gray-600 text-sm">4:12</span>
+                </div>
+                <div class="track-item flex items-center space-x-6 py-3 cursor-pointer group" data-src="audio/For You.mp3" data-title="For You">
+                    <span class="text-gray-500 text-sm w-8">03</span>
+                    <span class="flex-1 group-hover:text-[#10b981] transition-colors">For You</span>
+                    <span class="text-gray-600 text-sm">3:28</span>
+                </div>
+                <div class="track-item flex items-center space-x-6 py-3 cursor-pointer group" data-src="audio/Stargazer.mp3" data-title="Stargazer">
+                    <span class="text-gray-500 text-sm w-8">04</span>
+                    <span class="flex-1 group-hover:text-[#10b981] transition-colors">Stargazer</span>
+                    <span class="text-gray-600 text-sm">4:05</span>
+                </div>
+                <div class="track-item flex items-center space-x-6 py-3 cursor-pointer group" data-src="audio/Same By Friday.mp3" data-title="Same By Friday">
+                    <span class="text-gray-500 text-sm w-8">05</span>
+                    <span class="flex-1 group-hover:text-[#10b981] transition-colors">Same By Friday</span>
+                    <span class="text-gray-600 text-sm">3:52</span>
+                </div>
+                <div class="track-item flex items-center space-x-6 py-3 cursor-pointer group" data-src="audio/Wicked Games.mp3" data-title="Wicked Games">
+                    <span class="text-gray-500 text-sm w-8">06</span>
+                    <span class="flex-1 group-hover:text-[#10b981] transition-colors">Wicked Games</span>
+                    <span class="text-gray-600 text-sm">4:30</span>
+                </div>
+            </div>
+        </div>
+        
+        <audio id="audio-player"></audio>
+    </section>
+
+    <!-- ALBUM FEATURE SECTION -->
+    <section id="album-feature" class="min-h-screen flex items-center py-20">
+        <div class="max-w-7xl mx-auto px-12 w-full grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left: Album Cover -->
+            <div class="relative">
+                <div class="relative overflow-hidden rounded-lg">
+                    <img src="img/OPimage.png" 
+                         alt="Out of Place Album" 
+                         class="w-full h-auto animate-zoom">
+                    <div class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-black/20 pointer-events-none"></div>
+                    <div class="absolute inset-0 opacity-20 pointer-events-none" style="background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj4KICA8ZmlsdGVyIGlkPSJncmFpbiI+CiAgICA8ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iMC45IiBudW1PY3RhdmVzPSI0IiAvPgogICAgPGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIgLz4KICA8L2ZpbHRlcj4KICA8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsdGVyPSJ1cmwoI2dyYWluKSIgb3BhY2l0eT0iMC4zIi8+Cjwvc3ZnPg==');"></div>
+                </div>
+            </div>
+            
+            <!-- Right: Text Block -->
+            <div class="space-y-8">
+                <h2 class="text-5xl font-light tracking-wide">OUT OF PLACE</h2>
+                <p class="text-gray-400 text-lg leading-relaxed max-w-lg">
+                    Observations of a world that almost makes sense.
+                </p>
+                <button class="outline-button border border-white px-8 py-3 rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300">
+                    LISTEN TO ALBUM
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- MERCH SECTION -->
+    <section id="merch" class="min-h-screen py-20 px-12">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Product 1 -->
+                <div class="merch-item group cursor-pointer">
+                    <div class="overflow-hidden mb-6">
+                        <img src="https://picsum.photos/seed/tee/400/500.jpg" 
+                             alt="O-p Tee" 
+                             class="w-full h-auto transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <h3 class="text-xl font-light mb-2">O-p Tee</h3>
+                    <p class="text-gray-400">$45</p>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="merch-item group cursor-pointer">
+                    <div class="overflow-hidden mb-6">
+                        <img src="https://picsum.photos/seed/hoodie/400/500.jpg" 
+                             alt="O-p Hoodie" 
+                             class="w-full h-auto transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <h3 class="text-xl font-light mb-2">O-p Hoodie</h3>
+                    <p class="text-gray-400">$75</p>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="merch-item group cursor-pointer">
+                    <div class="overflow-hidden mb-6">
+                        <img src="https://picsum.photos/seed/vinyl/400/500.jpg" 
+                             alt="O-p Vinyl" 
+                             class="w-full h-auto transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <h3 class="text-xl font-light mb-2">O-p Vinyl</h3>
+                    <p class="text-gray-400">$35</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EMAIL CAPTURE -->
+    <section id="email-capture" class="py-20 px-12">
+        <div class="max-w-md mx-auto text-center">
+            <h2 class="text-2xl font-light mb-8">Stay in orbit</h2>
+            <form id="email-form" class="space-y-4">
+                <input type="email" 
+                       placeholder="your email" 
+                       class="w-full px-4 py-3 bg-transparent border border-gray-800 rounded-full text-white placeholder-gray-600 focus:outline-none focus:border-[#10b981] transition-colors">
+                <button type="submit" 
+                        class="w-full bg-white text-black px-6 py-3 rounded-full font-medium hover:bg-gray-200 transition-colors">
+                    join
+                </button>
+            </form>
+            <div id="email-confirm" class="mt-4 text-sm text-gray-400 opacity-0 transition-opacity">
+                Thanks for joining.
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-gray-500 text-sm">O-p</div>
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-500 hover:text-white transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors">
+                    <i class="fab fa-spotify"></i>
+                </a>
+                <a href="#" class="text-gray-500 hover:text-white transition-colors">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
